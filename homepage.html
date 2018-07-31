@@ -1,0 +1,75 @@
+<!--LOGIN ONLY WORKS FOR HOMEPAGE, MAKE SURE IT WORKS ELSEWHERE BY ATTACHING SCRIPTS AND AVATAR.IMAGE cSS CODE -->
+<head>
+  <title>RentIt - Safe Open Renting</title>
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAJxCrUJzqv55crZhLGfV98X643anYQPHw",
+    authDomain: "rentit-1.firebaseapp.com",
+    databaseURL: "https://rentit-1.firebaseio.com",
+    projectId: "rentit-1",
+    storageBucket: "",
+    messagingSenderId: "1097702071103"
+  };
+  firebase.initializeApp(config);
+</script>
+  <link rel="shortcut icon" href="favicon.jpg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <video autoplay muted loop id="myVideo">
+  <source src="stockfootage.mp4" type="video/mp4">
+  </video>
+  <nav id="navbar">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo"><b>RentIt - Safe and Open Renting</b></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sell_item.html"><b>Put an Item up for Rent</b></a></li>
+        <li><a href="marketplace.html"><b>Rent an Item</b></a></li>
+        <li id = login><a href="#"><b>Log In/Sign Up</b></a></li>
+        <li id = logout><a href="#"><b>Log Out</b></a></li>
+      </ul>
+    </div>
+  </nav>
+  <div id="searchbar" class="input-field">
+    <input id="search" type="search" required placeholder="Search">
+    <label class="label-icon" for="search"></label>
+  </div>
+
+  <div id = "category" class="input-field col s12">
+    <select id="category_select">
+      <option value="" disabled selected>Choose a Category</option>
+      <option value="1"><a href="#!">Technology</a></option>
+      <option value="2"><a href="#!">Clothing</a></option>
+      <option value="3"><a href="#!">Instruments</a></option>
+    </select>
+  </div>
+
+  <div id = "condition" class="input-field col s12">
+    <select id="condition_select">
+      <option value="" disabled selected>Choose a Condition</option>
+      <option value="1">New</option>
+      <option value="2">Used</option>
+      <option value="3">Damaged</option>
+    </select>
+  </div>
+
+  <div id = "price" class="input-field col s12">
+    <select id="price_select">
+      <option value="" disabled selected>Choose a Price Range</option>
+      <option value="1">Less than $20/day</option>
+      <option value="2">$10-$50/day</option>
+      <option value="3">$50-$100/day</option>
+      <option value="4">$100-$500/day</option>
+      <option value="5">More than $500/day</option>
+    </select>
+  </div>
+<script src="lender.js"></script>
+<script src="firebase.js"></script>
+<script src="ui.js"></script>
+</body>
