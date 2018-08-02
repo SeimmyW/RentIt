@@ -1,5 +1,6 @@
 const auth = firebase.auth()
 const database = firebase.firestore()
+const storage = firebase.storage()
 const settings = {/* your settings... */ timestampsInSnapshots: true};
 database.settings(settings);
 

@@ -3,10 +3,7 @@
 
 // var shopnowbutton = document.querySelector("#shopnowbutton")
 
-new Vue({
-  el: "#app",
-  data: {
-    products: [
+var productsArray = [
       {
         image: "https://via.placeholder.com/200x150",
         name: "PRODUCT ITEM NUMBER 1",
@@ -21,8 +18,13 @@ new Vue({
         price: 9.99,
         quantity: 1
       }
-    ],
-    tax: 5,
+    ]
+
+new Vue({
+  el: "#app",
+  data: {
+    products: productsArray,
+    fee: 5,
     promotions: [
       {
         code: "29xgbuHa4O",
@@ -63,7 +65,7 @@ new Vue({
       return this.subTotal * this.discount / 100;
     },
     totalPrice: function() {
-      return this.subTotal - this.discountPrice + this.tax;
+      return this.subTotal - this.discountPrice + this.fee;
     }
   },
   filters: {

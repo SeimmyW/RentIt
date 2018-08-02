@@ -10,7 +10,7 @@
       authDomain: "rentit-1.firebaseapp.com",
       databaseURL: "https://rentit-1.firebaseio.com",
       projectId: "rentit-1",
-      storageBucket: "",
+      storageBucket: "rentit-1.appspot.com",
       messagingSenderId: "1097702071103"
     };
     firebase.initializeApp(config);
@@ -97,7 +97,7 @@
         <ul>
           <li>Subtotal <span>{{ subTotal | currencyFormatted }}</span></li>
           <li v-if="discount > 0">Discount <span>{{ discountPrice | currencyFormatted }}</span></li>
-          <li>Tax <span>{{ tax | currencyFormatted }}</span></li>
+          <li>Service Fee <span>{{ fee | currencyFormatted }}</span></li>
           <li class="total">Total <span>{{ totalPrice | currencyFormatted }}</span></li>
         </ul>
       </div>

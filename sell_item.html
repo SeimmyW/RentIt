@@ -8,7 +8,7 @@
     authDomain: "rentit-1.firebaseapp.com",
     databaseURL: "https://rentit-1.firebaseio.com",
     projectId: "rentit-1",
-    storageBucket: "",
+    storageBucket: "rentit-1.appspot.com",
     messagingSenderId: "1097702071103"
   };
   firebase.initializeApp(config);
@@ -28,12 +28,14 @@
             <li><a href="marketplace.html"><b>Rent an Item</b></a></li>
             <li id = login><a href="#"><b>Log In/Sign Up</b></a></li>
             <li id = logout><a href="#"><b>Log Out</b></a></li>
+            <li><a href="pay_for_item.html">  <i class="large material-icons">shopping_cart</i></a></li>
             </ul>
         </div>
     </nav>
     <h1>Rent Out an Item</h1>
     <div class="row">
-    <form class="col s12">
+        <div class="col s12">
+    <!--<form class="col s12">-->
       <div class="row">
         <div class="input-field col s12">
           <input id="item_name" type="text" class="validate">
@@ -51,7 +53,7 @@
       <div class="file-field input-field">
           <div class="btn">
               <span>File</span>
-              <input type="file">
+              <input id = "image_file" type="file">
           </div>
           <div class="file-path-wrapper">
               <input class="file-path validate" type="text">
@@ -60,25 +62,26 @@
       <div id = "item_condition" class="input-field col s12">
         <select id="condition_set">
             <option value="" disabled selected>Choose a Condition</option>
-            <option value="1">New</option>
-            <option value="2">Used</option>
-            <option value="3">Damaged</option>
+            <option value="new">New</option>
+            <option value="used">Used</option>
+            <option value="damaged">Damaged</option>
         </select>
         <label for="condition_set">Condition</label>
     </div>
     <div id = "item_category" class="input-field col s12">
         <select id="category_set">
             <option value="" disabled selected>Choose a Category</option>
-            <option value="1">Technology</option>
-            <option value="2">Clothing</option>
-            <option value="3">Instruments</option>
+            <option value="technology">Technology</option>
+            <option value="clothing">Clothing</option>
+            <option value="instruments">Instruments</option>
         </select>
         <label for="category_set">Category</label>
     </div>
-    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <button id="sell_item_button" class="btn waves-effect waves-light" type="submit" name="action">Submit
         <i class="material-icons right">send</i>
     </button>
-    </form>
+    <!--</form>-->
+    </div>
   </div>
 <script src="firebase.js"></script>
 <script src="ui.js"></script>

@@ -13,6 +13,10 @@ body {
   overflow: scroll;
 }
 
+.nav-wrapper {
+  padding:1px 8px;
+}
+
 .avatar-image{
     height: 50px;
     width: 50px;
@@ -31,9 +35,9 @@ a {
   color: #333333;
 }
 
-a:hover {
-  color: #f58551;
-}
+/*a:hover {*/
+  /*color: #f58551;*/
+/*}*/
 
 button {
   background-color: #16cc9b;
