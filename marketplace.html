@@ -1,50 +1,141 @@
 <head>
-    <title>RentIt - Safe Open Renting</title>
-    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyAJxCrUJzqv55crZhLGfV98X643anYQPHw",
-            authDomain: "rentit-1.firebaseapp.com",
-            databaseURL: "https://rentit-1.firebaseio.com",
-            projectId: "rentit-1",
-            storageBucket: "rentit-1.appspot.com",
-            messagingSenderId: "1097702071103"
-        };
-        firebase.initializeApp(config);
-    </script>
-    <link rel="shortcut icon" href="favicon.jpg" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <link rel="stylesheet" href="marketstyle.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <title>RentIt - Safe Open Renting</title>
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAJxCrUJzqv55crZhLGfV98X643anYQPHw",
+      authDomain: "rentit-1.firebaseapp.com",
+      databaseURL: "https://rentit-1.firebaseio.com",
+      projectId: "rentit-1",
+      storageBucket: "rentit-1.appspot.com",
+      messagingSenderId: "1097702071103"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <link rel="shortcut icon" href="favicon.jpg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link rel="stylesheet" href="marketstyle.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="pay_for_item.css">
 
-
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
+  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
 </head>
 
 <body>
-    <nav id="navbar">
-        <div class="nav-wrapper">
-            <a href="homepage.html" class="brand-logo"><b>RentIt - Safe and Open Renting</b></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sell_item.html"><b>Put an Item up for Rent</b></a></li>
-                <li><a href="marketplace.html"><b>Rent an Item</b></a></li>
-                <li id= login><a href="#"><b>Log In/Sign Up</b></a></li>
-                <li id= logout><a href="#"><b>Log Out</b></a></li>
-                <li><a href="pay_for_item.html">  <i class="large material-icons">shopping_cart</i></a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="marketplace">
-        <ul id="products" class="catCardList">
-        </ul>
+  <nav id="navbar">
+    <div class="nav-wrapper">
+      <a href="homepage.html" class="brand-logo"><b>RentIt - Safe and Open Renting</b></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sell_item.html"><b>Put an Item up for Rent</b></a></li>
+        <li><a href="marketplace.html"><b>Rent an Item</b></a></li>
+        <li id="login"><a href="#"><b>Log In/Sign Up</b></a></li>
+        <li id="logout"><a href="#"><b>Log Out</b></a></li>
+        <!--<li><a href="pay_for_item.html">  <i class="large material-icons">shopping_cart</i></a></li>-->
+      </ul>
     </div>
-    
-    <script src="ui.js"></script>  
-    <script src="firebase.js"></script>
-    <script src="rentitlist.js"></script>
+  </nav>
+ 
+  <div id="app">
+    <!-- Marketplace listing -->
+    <ul class="catCardList" >
+      <li class="catCardList" v-for="(productInfo, idx) in marketplace" :key="idx">
+        <div class="catCard"><a href="#"><img style = "height:200; width: 221" :src="productInfo.imageURL" :alt="productInfo.name"></a>
+          <div class="lowerCatCard">
+            <h3>{{ productInfo.name }}</h3>
+            <div class="startingPrice">${{ productInfo.price }}/day</span>
+            </div>
+            <p>{{ productInfo.description }}</p>
+            <h4>Sold by:</h4>
+            <ul>
+              <li><b>{{ productInfo.sellername }}</b></li>
+            </ul>
+            <div id="catCardButton" class="button"><a @click="addItem(productInfo)">Add to Cart</a></div>
+          </div>
+        </div>
+      </li>
+    </ul>
 
-    <!--<script src="rentitlist.js"></script>-->
+    <div id="shopping_cart_app">
+
+      <!-- Header -->
+      <header class="container">
+        <h1>Shopping Cart</h1>
+        <ul class="breadcrumb">
+          <li>Home</li>
+          <li>Shopping Cart</li>
+        </ul>
+        <span class="count">{{ itemCount }} items in the bag</span>
+      </header>
+      <!-- End Header -->
+
+      <!-- Product List -->
+      <section class="container">
+        <div v-if="products.length > 0">
+          <ul class="products">
+            <li class="row" v-for="(product, index) in products">
+              <div class="col left">
+                <div class="thumbnail">
+                  <a href="#">
+              <img :src="product.image" :alt="product.name" />
+            </a>
+                </div>
+                <div class="detail">
+                  <div class="name"><a href="#">{{ product.name }}</a></div>
+                  <div class="description">{{ product.description }}</div>
+                  <div class="price">{{ product.price | currencyFormatted }}</div>
+                </div>
+              </div>
+
+              <div class="col right">
+                <div class="quantity">
+                  <input type="number" class="quantity" step="1" :value="product.quantity" @input="updateQuantity(index, $event)" @blur="checkQuantity(index, $event)" />
+                </div>
+
+                <div class="remove">
+                  <svg @click="removeItem(index)" version="1.1" class="close" xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve"><polygon points="38.936,23.561 36.814,21.439 30.562,27.691 24.311,21.439 22.189,23.561 28.441,29.812 22.189,36.064 24.311,38.186 30.562,31.934 36.814,38.186 38.936,36.064 32.684,29.812"></polygon></svg>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div v-else style="text-align: center;">
+          <h3>There are no products in your cart.</h3>
+          <button onclick="location.href = 'homepage.html';" style="font-size: 1.3rem; padding: 10px 30px;">Shop now</button>
+        </div>
+      </section>
+      <!-- End Product List -->
+
+      <!-- Summary -->
+      <section class="container" v-if="products.length > 0">
+        <div class="promotion">
+          <label for="promo-code">Have A Promo Code?</label>
+          <input type="text" id="promo-code" v-model="promoCode" /> <button type="button" @click="checkPromoCode"></button>
+        </div>
+
+        <div class="summary">
+          <ul>
+            <li>Subtotal <span>{{ subTotal | currencyFormatted }}</span></li>
+            <li v-if="discount > 0">Discount <span>{{ discountPrice | currencyFormatted }}</span></li>
+            <li>Service Fee <span>{{ fee | currencyFormatted }}</span></li>
+            <li class="total">Total <span>{{ totalPrice | currencyFormatted }}</span></li>
+          </ul>
+        </div>
+
+        <div class="checkout">
+          <button type="button"><a href= "dashboard.html">Check Out</button>
+        </div>
+      </section>
+      <!-- End Summary -->
+    </div>
+  </div>
+
+  <script src="ui.js"></script>
+  <script src="firebase.js"></script>
+  <script src="rentitlist.js"></script>
+  <!--<script src="pay_for_item.js"></script>-->
+  <!--<script src="rentitlist.js"></script>-->
 </body>

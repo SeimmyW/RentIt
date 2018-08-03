@@ -32,7 +32,7 @@ img {
 
 a {
   text-decoration: none;
-  color: #333333;
+  color: #000000;
 }
 
 /*a:hover {*/
@@ -120,7 +120,7 @@ header .breadcrumb li:not(:last-child)::after {
 
 header .count {
   float: right;
-  color: #333333;
+  color: #000000;
 }
 
 /* --- PRODUCT LIST --- */

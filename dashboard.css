@@ -4,3 +4,54 @@
     border-radius: 50px;
     margin-top: 7px;
 }
+
+body {
+    overflow:hidden;
+}
+
+#backimage {
+    background-image:url(https://i.ytimg.com/vi/x8mpMSw6Wy4/maxresdefault.jpg);
+    height:710px;
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    
+}
+
+#thanks {
+    display:flex;
+    justify-content:center;
+}
+
+#thanks2 {
+    display:flex;
+    justify-content:center;
+}
+
+button {
+
+  background-color: #16cc9b;
+  border: 2px solid #16cc9b;
+  color: #ffffff;
+  transition: all 0.25s linear;
+  cursor: pointer;
+}
+
+button::after {
+  position: relative;
+  right: 0;
+  content: " \276f";
+  transition: all 0.15s linear;
+}
+
+button:hover {
+  background-color: #f58551;
+  border-color: #f58551;
+}
+
+button:hover::after {
+  right: -5px;
+}
+
+button:focus {
+  outline: none;
+}

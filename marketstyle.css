@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
 
-
+.hidden {
+  display: none;
+  visibility: hidden;
+}
 .avatar-image{
     height: 50px;
     width: 50px;
@@ -9,7 +12,7 @@
     font-size:18 !important;
 }
 
-.rent-links, .brand-logo {
+.rent-links{
     color:white !important;
     text-decoration: none !important;
     font-size: 14 !important;
@@ -22,7 +25,7 @@
     text-decoration: none !important;
 }
 
-.marketplace {
+#app {
     width: 95% !important;
     margin: 0 auto !important;
 }
@@ -75,21 +78,28 @@ div.catCard:hover div.lowerCatCard {
   bottom: 0;
 }
 li.catCardList {
+  width: 25%;
   width:225px;
   display: inline-block;
-  /*margin-right: 19px;*/
+  margin-right: 19px;
   margin-top: 25px;
 }
 li.catCardList-last {
-  margin-right: 0;
+  margin-right: 10px;
   width:225px;
+  width: 25%;
   display: inline-block;
 }
 ul.catCardList {
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  /*margin-left: 5% !important;*/
+  /*display: flex;*/
+  /*max-width: 90vw;*/
+  /*justify-content: space-between;*/
+  /*overflow-x: scroll;*/
+  /*flex-wrap: wrap;*/
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
 }
 #catCardButton {
   position: absolute;

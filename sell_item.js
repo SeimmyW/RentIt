@@ -20,10 +20,10 @@
 
   sellButton.addEventListener("click", e => {
     console.log('click')
-    const condition = document.querySelector("#condition_set").value
+    /*const condition = document.querySelector("#condition_set").value
     console.log('condition: ' + condition)
     const category = document.querySelector("#category_set").value
-    console.log('category: ' + category)
+    console.log('category: ' + category)*/
     const price = document.querySelector("#item_price").value
     console.log('price: ' + price)
     const item_name = document.querySelector("#item_name").value
@@ -32,11 +32,11 @@
     console.log('description :' + description)
     const image = document.querySelector("#image_file").files[0]
     console.log(image)
-
-    uploadItemToFirebase(item_name, price, category, condition, description, image)
+//removed category and condition from both function parameters below
+    uploadItemToFirebase(item_name, price, description, image)
   })
 
-  function uploadItemToFirebase(item_name, price, category, condition, description, image) {
+  function uploadItemToFirebase(item_name, price, description, image) {
     console.log('hello')
     const userId = auth.currentUser.uid
     const username = auth.currentUser.displayName
@@ -51,8 +51,8 @@
       name: item_name,
       description: description,
       price: price,
-      category: category,
-      condition: condition,
+      //category: category,
+      //condition: condition,
       imageURL: null,
       boughtby: null
     }
